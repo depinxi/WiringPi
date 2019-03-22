@@ -88,12 +88,17 @@ void myPullUpDnControl (struct wiringPiNodeStruct *node, int pin, int pud)
 
 int piFaceSetup (const int pinBase)
 {
+  return piFaceDeviceSetup (0, pinBase);
+}
+
+int piFaceDeviceSetup (const int deviceId, const int pinBase)
+{
   int    i ;
   struct wiringPiNodeStruct *node ;
 
 // Create an mcp23s17 instance:
 
-   mcp23s17Setup (pinBase + 16, 0, 0) ;
+   mcp23s17Setup (pinBase + 16, 0, deviceId) ;
 
 // Set the direction bits
 
